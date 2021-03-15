@@ -31,52 +31,52 @@ namespace audioCutter_v1._1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string textFromFile = null;
-            using (FileStream fstream = File.OpenRead(path))
-            {
-                // преобразуем строку в байты
-                byte[] array = new byte[fstream.Length];
-                // считываем данные
-                fstream.Read(array, 0, array.Length);
-                // декодируем байты в строку
-                textFromFile = System.Text.Encoding.Default.GetString(array);
-                //Console.WriteLine($"Текст из файла: {textFromFile}");
-            }
-            if (textFromFile != null)
-            {
-                int len = 0;
-                for(int i = 0; i < textFromFile.Length; i++)
-                {
-                    if (textFromFile[i] == ' ')
-                    {
-                        string fileName = textFromFile.Substring(0, len) + ".wav";
-                        string filePath = Path.Combine("D:\\project\\youtube\\converted\\", fileName);
-                        string outPath = @"D:\project\Audio_Cutted\" + fileName;
+            //string textFromFile = null;
+            //using (FileStream fstream = File.OpenRead(path))
+            //{
+            //    // преобразуем строку в байты
+            //    byte[] array = new byte[fstream.Length];
+            //    // считываем данные
+            //    fstream.Read(array, 0, array.Length);
+            //    // декодируем байты в строку
+            //    textFromFile = System.Text.Encoding.Default.GetString(array);
+            //    //Console.WriteLine($"Текст из файла: {textFromFile}");
+            //}
+            //if (textFromFile != null)
+            //{
+            //    int len = 0;
+            //    for(int i = 0; i < textFromFile.Length; i++)
+            //    {
+            //        if (textFromFile[i] == ' ')
+            //        {
+            //            string fileName = textFromFile.Substring(0, len) + ".wav";
+            //            string filePath = Path.Combine("D:\\project\\youtube\\converted\\", fileName);
+            //            string outPath = @"D:\project\Audio_Cutted\" + fileName;
 
-                        int len1 = 0;
-                        int j = i + 1;
-                        while(textFromFile[j] != ' ')
-                        {
-                            len1 *= 10;
-                            len1 += (int)((int)textFromFile[j] - '0');
-                            j++;
-                        }
-                        j++;
-                        int len2 = 0;
-                        while (j < textFromFile.Length && textFromFile[j] != '\r' && textFromFile[j] != ' ')
-                        {
-                            len2 *= 10;
-                            len2 += (int)((int)textFromFile[j] - '0');
-                            j++;
-                        }
-                        TimeSpan start = new TimeSpan(0,0, len1);
-                        TimeSpan end = new TimeSpan(0,0, len2);
-                        TrimWavFile(filePath, outPath, start, end);
-                        len = 0;
-                    }
-                    len++;
-                }
-            }
+            //            int len1 = 0;
+            //            int j = i + 1;
+            //            while(textFromFile[j] != ' ')
+            //            {
+            //                len1 *= 10;
+            //                len1 += (int)((int)textFromFile[j] - '0');
+            //                j++;
+            //            }
+            //            j++;
+            //            int len2 = 0;
+            //            while (j < textFromFile.Length && textFromFile[j] != '\r' && textFromFile[j] != ' ')
+            //            {
+            //                len2 *= 10;
+            //                len2 += (int)((int)textFromFile[j] - '0');
+            //                j++;
+            //            }
+            //            TimeSpan start = new TimeSpan(0,0, len1);
+            //            TimeSpan end = new TimeSpan(0,0, len2);
+            //            TrimWavFile(filePath, outPath, start, end);
+            //            len = 0;
+            //        }
+            //        len++;
+            //    }
+            //}
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
